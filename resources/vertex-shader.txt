@@ -1,0 +1,20 @@
+#version 150
+
+in vec3 vert;
+in vec3 vertColor;
+in vec2 vertTexCoord;
+
+out vec2 fragTexCoord;
+out vec3 fragColor;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 proj;
+
+void main() {
+    // Pass the tex coord straight through to the fragment shader
+    fragTexCoord = vertTexCoord;
+    fragColor = vertColor;
+    
+    gl_Position = proj * view * model * vec4(vert, 1);
+}
